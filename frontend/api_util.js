@@ -6,7 +6,7 @@ const APIUtil = {
       method: "POST",
       dataType: "json"
     });
-    
+
   },
 
   unfollowUser: id => {
@@ -15,7 +15,18 @@ const APIUtil = {
       method: "DELETE",
       dataType: "json"
     });
-  }
+  },
+
+  searchUsers: (queryVal, success) => {
+    return $.ajax ({
+      url: `/users/search`,
+      data: { query: queryVal },
+      dataType: "json",
+      success: function (data) {
+        success(data);
+      }
+    });
+  },
 };
 
 
